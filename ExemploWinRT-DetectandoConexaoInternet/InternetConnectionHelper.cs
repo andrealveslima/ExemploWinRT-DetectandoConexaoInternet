@@ -8,7 +8,7 @@ using Windows.Networking.Connectivity;
 namespace ExemploWinRT_DetectandoConexaoInternet
 {
     /// <summary>
-    /// Class que auxilia na detecção do estado da conexão com a Internet.
+    /// Classe que auxilia na detecção do estado da conexão com a Internet.
     /// </summary>
     public static class InternetConnectionHelper
     {

@@ -3,32 +3,33 @@ using GalaSoft.MvvmLight;
 namespace ExemploWinRT_DetectandoConexaoInternet.ViewModel
 {
     /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
+    /// ViewModel contendo as propriedades e comandos a serem bindados na Main View.
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        #region Atributos e Propriedades
         /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
+        /// Atalho para a propriedade de mesmo nome da classe InternetConnectionHelper. Adicionada na ViewModel para implementar suporte a change notification.
+        /// </summary>
+        public bool ConexaoDisponivel
+        {
+            get 
+            { 
+                return InternetConnectionHelper.ConexaoDisponivel; 
+            }
+        }
+        #endregion
+
+        #region Construtores
+        /// <summary>
+        /// Constroi uma instância de MainViewModel, realizando outras tarefas necessárias.
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            // Quando o evento ConexaoDisponivelChanged é disparado na classe InternetConnectionHelper, precisamos notificar a alteração da propriedade ConexaoDisponivel
+            // para que a UI seja atualizada caso necessário.
+            InternetConnectionHelper.ConexaoDisponivelChanged += (s) => GalaSoft.MvvmLight.Threading.DispatcherHelper.CheckBeginInvokeOnUI(() => RaisePropertyChanged("ConexaoDisponivel"));
         }
+        #endregion
     }
 }
