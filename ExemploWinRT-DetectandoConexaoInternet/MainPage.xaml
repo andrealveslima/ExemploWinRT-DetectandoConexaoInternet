@@ -5,9 +5,29 @@
     xmlns:local="using:ExemploWinRT_DetectandoConexaoInternet"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-
+    mc:Ignorable="d"
+    DataContext="{Binding Main, Source={StaticResource Locator}}">
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel Orientation="Vertical"
+                    Margin="50">
+            <TextBlock TextWrapping="Wrap"
+                       Text="Conectado!"
+                       Style="{StaticResource HeaderTextStyle}"
+                       Foreground="#DE7AE81F"
+                       Visibility="{Binding ConexaoDisponivel, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBlock TextWrapping="Wrap"
+                       Text="Desconectado!"
+                       Style="{StaticResource HeaderTextStyle}"
+                       Foreground="#DEFD1616">
+                <TextBlock.Visibility>
+                    <Binding Path="ConexaoDisponivel"
+                             Converter="{StaticResource BooleanToVisibilityConverter}">
+                        <Binding.ConverterParameter>
+                            <x:Boolean>True</x:Boolean>
+                        </Binding.ConverterParameter>
+                    </Binding>
+                </TextBlock.Visibility>
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </Page>

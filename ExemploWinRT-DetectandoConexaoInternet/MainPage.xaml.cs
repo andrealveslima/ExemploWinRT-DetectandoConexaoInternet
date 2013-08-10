@@ -24,6 +24,7 @@ namespace ExemploWinRT_DetectandoConexaoInternet
         public MainPage()
         {
             this.InitializeComponent();
+            GalaSoft.MvvmLight.Threading.DispatcherHelper.Initialize();
         }
 
         /// <summary>
