@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:ExemploWinRT_DetectandoConexaoInternet.ViewModel"
+             xmlns:visibilityconverters="using:WinRTConverters.Visibility"
              mc:Ignorable="d">
 
     <Application.Resources>
@@ -21,6 +22,7 @@
 
             <vm:ViewModelLocator x:Key="Locator"
                                  d:IsDataSource="True" />
+            <visibilityconverters:BooleanToVisibilityConverter x:Name="BooleanToVisibilityConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
